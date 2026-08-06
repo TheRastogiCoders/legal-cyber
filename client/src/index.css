@@ -1623,8 +1623,8 @@ p {
   right: 1.25rem;
   bottom: 5.35rem;
   z-index: 90;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   padding: 0;
   margin: 0;
   border-radius: 50%;
@@ -1638,7 +1638,7 @@ p {
   justify-content: center;
   line-height: 0;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(7, 20, 40, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
   transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
@@ -1650,8 +1650,8 @@ p {
 }
 
 .back-to-top svg {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   display: block;
   flex-shrink: 0;
 }
@@ -1756,7 +1756,7 @@ body.has-cookie-banner .wa-float {
 }
 
 body.has-cookie-banner .back-to-top {
-  bottom: 9.85rem;
+  bottom: 10.1rem;
 }
 
 .reveal {
@@ -2100,10 +2100,10 @@ body.has-cookie-banner .back-to-top {
   }
 
   .back-to-top {
-    right: 0.95rem;
-    bottom: 4.85rem;
-    width: 44px;
-    height: 44px;
+    right: 0.85rem;
+    bottom: 5.1rem;
+    width: 56px;
+    height: 56px;
   }
 
   .cookie-banner__inner {
@@ -2128,6 +2128,6 @@ body.has-cookie-banner .back-to-top {
   }
 
   body.has-cookie-banner .back-to-top {
-    bottom: 13rem;
+    bottom: 13.25rem;
   }
 }
