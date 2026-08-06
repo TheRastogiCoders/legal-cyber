@@ -29,6 +29,23 @@ Contact form posts to `POST /api/contact` and stores enquiries in `server/data/e
 
 ## Production
 
+### Vercel (recommended for the website)
+
+This repo is configured for Vercel via `vercel.json`:
+- Installs and builds the Vite client
+- Serves `client/dist`
+- SPA rewrites for React Router
+- Contact form API at `POST /api/contact`
+
+Import the GitHub repo in Vercel, leave **Root Directory** empty (repo root), and deploy.
+
+```bash
+# or from CLI
+npx vercel --prod
+```
+
+### Node/Express server
+
 ```bash
 npm run build
 npm start
