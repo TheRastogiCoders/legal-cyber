@@ -5,7 +5,7 @@ export const SITE = {
   phoneHref: 'tel:+919395159957',
   whatsapp: '919395159957',
   whatsappText: 'Hello, I need legal assistance regarding a cyber matter.',
-  email: 'contact@legal-cyber.com',
+  email: 'contact@lawsake.com',
   location: 'New Delhi NCR, India',
   hours: 'Monday–Saturday, 10:00–19:00 IST',
 };

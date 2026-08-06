@@ -71,7 +71,7 @@ export function PrivacyPolicy() {
           <h2>Your rights & grievance</h2>
           <p>
             Subject to the DPDP Act, you may request access, correction, or erasure, and raise grievances at
-            contact@legal-cyber.com / +91 93951 59957 — New Delhi, India.
+            contact@lawsake.com / +91 93951 59957 — New Delhi, India.
           </p>
         </div>
       </section>
