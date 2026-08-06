@@ -50,7 +50,7 @@ export const NAV = [
 
 export const STATS = [
   { value: '22.68L+', label: 'Cybercrime incidents reported in India (2024)' },
-  { value: '₹22,845 Cr', label: 'Reported financial losses in 2024 — up 206% YoY' },
+  { value: '₹22,845 Cr', label: 'Reported financial losses in 2024, up 206% YoY' },
   { value: '7,000+', label: 'Complaints reported daily on the national portal' },
   { value: '₹1,935 Cr', label: 'Lost to “digital arrest” scams in 2024 alone' },
 ];

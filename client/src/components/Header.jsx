@@ -24,20 +24,30 @@ export default function Header() {
         <Link to="/practice-areas/bank-account-unfreeze">Get help today →</Link>
       </div>
       <div className="container nav-wrap">
-        <Link to="/" className="brand" onClick={() => setOpen(false)}>
+        <Link
+          to="/"
+          className="brand"
+          onClick={() => {
+            setOpen(false);
+            setOpenDrop(null);
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+          }}
+        >
           <strong>LEGAL-CYBER</strong>
           <span>Cyber · Fraud · Data Protection</span>
         </Link>
 
         <button
           type="button"
-          className="menu-toggle"
+          className={`menu-toggle${open ? ' is-open' : ''}`}
           aria-expanded={open}
           aria-controls="site-nav"
           aria-label={open ? 'Close menu' : 'Open menu'}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? 'Close' : 'Menu'}
+          <span className="menu-toggle__bar" aria-hidden="true" />
+          <span className="menu-toggle__bar" aria-hidden="true" />
+          <span className="menu-toggle__bar" aria-hidden="true" />
         </button>
 
         <nav id="site-nav" className={`nav ${open ? 'open' : ''}`}>

@@ -25,8 +25,10 @@ export default function Home() {
         />
         <div className="hero-shade" aria-hidden="true" />
         <div className="container hero-inner">
-          <div className="brand-mark">Legal-Cyber</div>
-          <h1>Cyber crime &amp; financial fraud counsel — when speed decides the outcome.</h1>
+          <h1>
+            <span className="hero-title-line">Cyber crime &amp; financial fraud counsel.</span>
+            <span className="hero-title-line">When speed decides the outcome.</span>
+          </h1>
           <p className="lead">
             Pan-India practice for fraud recovery, frozen accounts, enforcement matters, and DPDP
             compliance. Clear first steps. Direct advocate access.
