@@ -2047,7 +2047,7 @@ body.has-cookie-banner .back-to-top {
     min-height: 100svh;
     min-height: 100dvh;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero-media {
@@ -2073,16 +2073,18 @@ body.has-cookie-banner .back-to-top {
   }
 
   .hero-inner {
-    flex: 1;
+    flex: 1 1 auto;
     align-self: stretch;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1.65rem;
     width: 100%;
-    min-height: 0;
-    height: 100%;
-    padding: 1.75rem 0 2rem;
+    min-height: calc(100svh - var(--header-h));
+    min-height: calc(100dvh - var(--header-h));
+    height: auto;
+    padding: 1.5rem 0 2.25rem;
     max-width: none;
     text-align: center;
     margin-inline: auto;
@@ -2119,10 +2121,11 @@ body.has-cookie-banner .back-to-top {
     width: 100%;
     max-width: 22rem;
     margin-inline: auto;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.15rem;
   }
 
   .hero-actions {
@@ -2177,25 +2180,30 @@ body.has-cookie-banner .back-to-top {
   .trust-strip {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.55rem 0.65rem;
+    gap: 0.5rem;
     margin-top: 0;
     padding-top: 0;
     border-top: none;
     width: 100%;
     max-width: 22rem;
     margin-inline: auto;
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     justify-content: center;
     text-align: center;
   }
 
   .trust-strip li {
-    display: block;
-    padding: 0.4rem 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.45rem 0.4rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(5, 14, 28, 0.35);
     backdrop-filter: blur(6px);
-    line-height: 1.3;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
   .trust-strip li:not(:last-child)::after {
@@ -2250,5 +2258,52 @@ body.has-cookie-banner .back-to-top {
 
   body.has-cookie-banner .back-to-top {
     bottom: 13.25rem;
+  }
+
+  .modal-backdrop {
+    padding: 0.75rem;
+    align-items: center;
+  }
+
+  .modal {
+    width: min(100%, 340px);
+    max-height: min(72dvh, 520px);
+    padding: 1rem 0.95rem 0.95rem;
+    border-radius: 10px;
+  }
+
+  .modal h2 {
+    font-size: 1.05rem;
+    line-height: 1.25;
+    margin: 0 0 0.55rem;
+  }
+
+  .modal p {
+    font-size: 0.75rem;
+    line-height: 1.45;
+    margin: 0 0 0.55rem;
+  }
+
+  .modal ul {
+    margin: 0 0 0.85rem;
+    padding-left: 0.95rem;
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  .modal li {
+    margin-bottom: 0.35rem;
+  }
+
+  .modal .btn-row {
+    margin-top: 0;
+    gap: 0.45rem;
+  }
+
+  .modal .btn {
+    flex: 1;
+    padding: 0.55rem 0.65rem;
+    font-size: 0.78rem;
+    min-height: 2.4rem;
   }
 }
