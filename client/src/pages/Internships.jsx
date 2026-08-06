@@ -14,7 +14,7 @@ export default function Internships() {
     <>
       <PageHero
         eyebrow="Careers"
-        title="Internships at Legal-Cyber"
+        title="Internships at Lawsake"
         lead="A structured internship programme training law students in live cyber-law research and drafting — not photocopy duty."
         image={IMAGES.about}
       />

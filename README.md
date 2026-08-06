@@ -1,6 +1,6 @@
-# Legal-Cyber Website
+# Lawsake Website
 
-Professional website for Legal-Cyber — cyber crime, data protection & financial fraud practice.
+Professional website for Lawsake — cyber crime, data protection & financial fraud practice.
 
 ## Stack
 

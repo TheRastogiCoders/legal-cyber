@@ -39,7 +39,7 @@ export default function DisclaimerModal() {
         </p>
         <ul>
           <li>
-            You wish to gain more information about Legal-Cyber and its advocates for your own information
+            You wish to gain more information about Lawsake and its advocates for your own information
             and personal/professional use, and are accessing this website of your own accord; there has been
             no advertisement, solicitation, invitation, or inducement of any kind.
           </li>

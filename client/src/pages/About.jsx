@@ -25,7 +25,7 @@ export default function About() {
             <div className="detail-block">
               <h2>The Founding Advocate</h2>
               <p>
-                Legal-Cyber is led by its founding advocate — a lawyer practising since 2021, focused on
+                Lawsake is led by its founding advocate — a lawyer practising since 2021, focused on
                 cyber crime, financial fraud, data protection, and enforcement-agency litigation. She
                 founded the practice in June 2022 to build a dedicated technology-law practice as cyber
                 fraud in India began its steepest climb.

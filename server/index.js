@@ -40,7 +40,7 @@ function rateLimit(req, res, next) {
 }
 
 app.get('/api/health', (_req, res) => {
-  res.json({ ok: true, service: 'legal-cyber-api' });
+  res.json({ ok: true, service: 'lawsake-api' });
 });
 
 app.post('/api/contact', rateLimit, (req, res) => {
@@ -126,5 +126,5 @@ if (fs.existsSync(clientDist)) {
 }
 
 app.listen(PORT, () => {
-  console.log(`Legal-Cyber API running on http://localhost:${PORT}`);
+  console.log(`Lawsake API running on http://localhost:${PORT}`);
 });

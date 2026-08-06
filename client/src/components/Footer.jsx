@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} Legal-Cyber. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</span>
         <span>This website is for information only and is not an advertisement or solicitation.</span>
       </div>
     </footer>

@@ -96,7 +96,7 @@ export default function Home() {
       <section className="section section--muted">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">Why Legal-Cyber</div>
+            <div className="eyebrow">Why Lawsake</div>
             <h2>Why clients retain this practice</h2>
             <p className="lead">Four reasons matters move faster here than with general counsel.</p>
           </div>

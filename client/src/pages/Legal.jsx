@@ -9,7 +9,7 @@ export function Disclaimer() {
           <h2>No advertisement or solicitation</h2>
           <p>
             The Bar Council of India does not permit advocates to advertise or solicit work. This website
-            exists solely to provide general information about Legal-Cyber to visitors who seek it of their
+            exists solely to provide general information about Lawsake to visitors who seek it of their
             own accord.
           </p>
           <h2>No legal advice</h2>
@@ -46,7 +46,7 @@ export function PrivacyPolicy() {
       <section className="section">
         <div className="container prose">
           <p>
-            Legal-Cyber operates legal-cyber.com and is the data fiduciary for personal data collected
+            Lawsake operates lawsake.com and is the data fiduciary for personal data collected
             through the Website under the DPDP Act, 2023.
           </p>
           <h2>Personal data we collect</h2>
@@ -86,19 +86,19 @@ export function TermsOfUse() {
       <section className="section">
         <div className="container prose">
           <p>
-            By accessing legal-cyber.com you agree to these Terms, the Disclaimer, Privacy Policy, and Cookie
+            By accessing lawsake.com you agree to these Terms, the Disclaimer, Privacy Policy, and Cookie
             Policy. The Website provides general information only and does not create a lawyer-client
             relationship.
           </p>
           <h2>Intellectual property</h2>
           <p>
-            All content is owned by or licensed to Legal-Cyber. You may view and print for personal,
+            All content is owned by or licensed to Lawsake. You may view and print for personal,
             non-commercial use with attribution. Republication or scraping without written permission is
             prohibited.
           </p>
           <h2>Limitation of liability</h2>
           <p>
-            The Website is provided “as is”. To the maximum extent permitted by law, Legal-Cyber shall not be
+            The Website is provided “as is”. To the maximum extent permitted by law, Lawsake shall not be
             liable for loss arising from use of or reliance on the Website. These terms are governed by
             Indian law; courts at New Delhi have exclusive jurisdiction.
           </p>
