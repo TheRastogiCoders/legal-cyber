@@ -35,15 +35,17 @@ export default function Home() {
               compliance. Clear first steps. Direct advocate access.
             </p>
           </div>
-          <div className="hero-actions">
-            <CtaButtons light urgent />
+          <div className="hero-bottom">
+            <div className="hero-actions">
+              <CtaButtons light urgent />
+            </div>
+            <ul className="trust-strip">
+              <li>High Courts</li>
+              <li>District Courts</li>
+              <li>ED, CBI, EOW &amp; cyber police</li>
+              <li>8 jurisdictions</li>
+            </ul>
           </div>
-          <ul className="trust-strip">
-            <li>High Courts</li>
-            <li>District Courts</li>
-            <li>ED, CBI, EOW &amp; cyber police</li>
-            <li>8 jurisdictions</li>
-          </ul>
         </div>
       </section>
 
