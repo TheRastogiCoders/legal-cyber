@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root {
   --royal-deep: #071428;
   --royal: #0f2a55;
   --royal-mid: #1e3c72;
   --royal-bright: #2d5a9e;
-  --steel: #4b5568;
-  --grey: #6b7280;
-  --grey-soft: #9ca3af;
+  --steel: #334155;
+  --grey: #475569;
+  --grey-soft: #94a3b8;
   --grey-line: #d1d5db;
   --grey-bg: #f3f4f6;
   --white: #ffffff;
@@ -18,8 +18,8 @@
   --radius: 4px;
   --max: 1120px;
   --header-h: 72px;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
 }
 
 *,
@@ -35,10 +35,18 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 500;
   color: var(--royal-deep);
   background: var(--white);
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -63,23 +71,25 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-optical-sizing: auto;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   margin: 0 0 0.6em;
   color: var(--royal-deep);
 }
 
 h1 {
-  font-size: clamp(2.4rem, 5vw, 3.75rem);
+  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
 }
 
 h2 {
-  font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+  font-size: clamp(1.7rem, 3.2vw, 2.45rem);
 }
 
 h3 {
-  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 600;
 }
 
 p {
@@ -94,9 +104,10 @@ p {
 
 .eyebrow {
   display: inline-block;
+  font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--royal-bright);
   margin-bottom: 0.85rem;
@@ -104,13 +115,15 @@ p {
 
 .lead {
   font-size: 1.125rem;
+  font-weight: 500;
   max-width: 42rem;
   color: var(--steel);
+  line-height: 1.65;
 }
 
 .lead--body {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1.12rem;
+  line-height: 1.75;
   color: var(--royal-deep);
   margin-bottom: 2rem;
 }
@@ -161,7 +174,8 @@ p {
   padding: 0.85rem 1.45rem;
   border-radius: var(--radius);
   border: 1.5px solid transparent;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
   cursor: pointer;
@@ -242,20 +256,6 @@ p {
   background: #071428;
 }
 
-.urgent-bar {
-  background: #8a1a1a;
-  color: var(--white);
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-align: center;
-  padding: 0.45rem 1rem;
-}
-
-.urgent-bar a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
 .nav-wrap {
   display: flex;
   align-items: center;
@@ -266,23 +266,18 @@ p {
 
 .brand {
   display: flex;
-  flex-direction: column;
-  gap: 0.05rem;
+  align-items: center;
   color: var(--white);
+  flex-shrink: 0;
 }
 
-.brand strong {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.brand span {
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--grey-soft);
+.brand-logo {
+  display: block;
+  height: 42px;
+  width: auto;
+  max-width: min(200px, 52vw);
+  object-fit: contain;
+  mix-blend-mode: lighten;
 }
 
 .nav {
@@ -294,9 +289,9 @@ p {
 
 .nav-link {
   position: relative;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.92rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.55rem 0.75rem;
   border-radius: var(--radius);
 }
@@ -422,13 +417,17 @@ p {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Hero */
+/* Hero — underlaps sticky header so media meets the nav with no seam */
 .hero {
   position: relative;
-  min-height: calc(100dvh - var(--header-h) - 2.4rem);
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   overflow: hidden;
+  margin: 0;
+  margin-top: calc(var(--header-h) * -1);
+  padding: 0;
+  padding-top: var(--header-h);
   background: var(--royal-deep);
   color: var(--white);
 }
@@ -498,15 +497,13 @@ p {
   width: 100%;
 }
 
-.hero .brand-mark {
-  font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 1.15rem;
-  animation: fadeUp 0.7s ease both;
+.hero-copy,
+.hero-actions {
+  width: 100%;
+}
+
+.hero .btn-row {
+  animation: fadeUp 0.8s 0.24s ease both;
 }
 
 .hero h1 {
@@ -524,11 +521,12 @@ p {
 }
 
 .hero .lead {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(1.02rem, 2vw, 1.18rem);
-  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  line-height: 1.6;
   max-width: 34rem;
   margin-bottom: 0;
+  font-weight: 500;
   animation: fadeUp 0.8s 0.16s ease both;
 }
 
@@ -909,11 +907,12 @@ p {
 }
 
 .page-hero .lead {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(1.02rem, 2vw, 1.18rem);
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
   max-width: 40rem;
-  line-height: 1.55;
+  line-height: 1.6;
   margin-bottom: 0;
+  font-weight: 500;
 }
 
 .media-frame {
@@ -1031,8 +1030,9 @@ p {
   padding: 0.9rem 0;
   color: var(--steel);
   border-bottom: 1px solid var(--grey-line);
-  line-height: 1.55;
-  font-size: 1rem;
+  line-height: 1.6;
+  font-size: 1.02rem;
+  font-weight: 500;
 }
 
 .list-check li::before {
@@ -1134,7 +1134,8 @@ p {
 
 .faq summary {
   cursor: pointer;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-weight: 700;
   color: var(--royal-deep);
   list-style: none;
   line-height: 1.45;
@@ -1386,8 +1387,62 @@ p {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.contact-aside__cta {
-  width: 100%;
+.contact-simple {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.contact-simple__card {
+  background: var(--royal-deep);
+  color: var(--white);
+  padding: 2rem 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-simple__card h2 {
+  color: var(--white);
+  margin: 0 0 1.15rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: clamp(1.45rem, 2.5vw, 1.75rem);
+}
+
+.contact-simple .contact-list {
+  margin-bottom: 1.5rem;
+}
+
+.contact-simple .contact-row dd a {
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-simple__actions {
+  margin-top: 0;
+}
+
+.contact-simple__actions .btn--outline {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-simple__actions .btn--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border-color: var(--white);
+}
+
+@media (max-width: 700px) {
+  .contact-simple__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-simple__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .cred-list {
@@ -1563,6 +1618,16 @@ p {
 
 .site-footer a:hover {
   color: var(--white);
+}
+
+.footer-brand .footer-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  margin-bottom: 0.85rem;
+  mix-blend-mode: lighten;
 }
 
 .footer-brand strong {
@@ -1899,12 +1964,6 @@ body.has-cookie-banner .back-to-top {
     padding: 0.95rem 1rem !important;
     width: 100%;
   }
-
-  .urgent-bar {
-    font-size: 0.8rem;
-    line-height: 1.35;
-    padding: 0.5rem 0.85rem;
-  }
 }
 
 @media (max-width: 700px) {
@@ -1977,20 +2036,32 @@ body.has-cookie-banner .back-to-top {
   }
 
   .hero {
-    min-height: calc(100svh - var(--header-h) - 2.75rem);
-    min-height: calc(100dvh - var(--header-h) - 2.75rem);
-    align-items: center;
+    min-height: 100svh;
+    min-height: 100dvh;
+    align-items: stretch;
     justify-content: center;
   }
 
   .hero-media {
-    object-position: 70% center;
+    object-position: center center;
+    object-fit: cover;
+    transform: none;
+    animation: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   .hero-shade {
     background:
-      linear-gradient(180deg, rgba(5, 14, 28, 0.72) 0%, rgba(7, 20, 40, 0.88) 45%, rgba(5, 14, 28, 0.94) 100%),
-      linear-gradient(105deg, rgba(5, 14, 28, 0.7) 0%, rgba(15, 42, 85, 0.35) 100%);
+      linear-gradient(180deg, rgba(5, 14, 28, 0.55) 0%, rgba(7, 20, 40, 0.4) 38%, rgba(5, 14, 28, 0.58) 100%);
+  }
+
+  .hero::before {
+    opacity: 0.18;
+    animation: none;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
   }
 
   .hero-inner {
@@ -1999,11 +2070,19 @@ body.has-cookie-banner .back-to-top {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
-    padding: 1.75rem 0 1.5rem;
+    min-height: 0;
+    height: 100%;
+    padding: 1.75rem 0 2rem;
     max-width: none;
     text-align: center;
+    margin-inline: auto;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 22rem;
     margin-inline: auto;
   }
 
@@ -2013,6 +2092,7 @@ body.has-cookie-banner .back-to-top {
     margin: 0 auto 0.85rem;
     max-width: none;
     text-wrap: pretty;
+    text-shadow: 0 2px 18px rgba(5, 14, 28, 0.65);
   }
 
   .hero-title-line {
@@ -2020,10 +2100,17 @@ body.has-cookie-banner .back-to-top {
   }
 
   .hero .lead {
-    font-size: 0.94rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.55;
     max-width: 22rem;
     margin-inline: auto;
+    text-shadow: 0 1px 12px rgba(5, 14, 28, 0.55);
+  }
+
+  .hero-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .hero .btn-row {
@@ -2032,7 +2119,7 @@ body.has-cookie-banner .back-to-top {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: 1.35rem;
+    margin-top: 0;
   }
 
   .hero .btn-row .btn {
@@ -2059,8 +2146,9 @@ body.has-cookie-banner .back-to-top {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.55rem 0.65rem;
-    margin-top: 1.5rem;
-    padding-top: 1rem;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
     width: 100%;
     max-width: 22rem;
     margin-inline: auto;
@@ -2071,9 +2159,10 @@ body.has-cookie-banner .back-to-top {
 
   .trust-strip li {
     display: block;
-    padding: 0.35rem 0.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.04);
+    padding: 0.4rem 0.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(5, 14, 28, 0.35);
+    backdrop-filter: blur(6px);
     line-height: 1.3;
   }
 

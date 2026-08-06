@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <strong>LEGAL-CYBER</strong>
+          <img src="/logo.png" alt="Lawsake" className="footer-logo" />
           <p>{SITE.tagline}</p>
           <p>
             {SITE.location}

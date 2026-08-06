@@ -19,10 +19,6 @@ export default function Header() {
 
   return (
     <header className={`site-header${open ? ' site-header--open' : ''}`}>
-      <div className="urgent-bar">
-        <span>Urgent: Account Frozen?</span>{' '}
-        <Link to="/practice-areas/bank-account-unfreeze">Get help today →</Link>
-      </div>
       <div className="container nav-wrap">
         <Link
           to="/"
@@ -33,8 +29,7 @@ export default function Header() {
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
           }}
         >
-          <strong>LEGAL-CYBER</strong>
-          <span>Cyber · Fraud · Data Protection</span>
+          <img src="/logo.png" alt="Lawsake" className="brand-logo" />
         </Link>
 
         <button

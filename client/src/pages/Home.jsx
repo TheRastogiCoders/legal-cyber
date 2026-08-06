@@ -25,15 +25,19 @@ export default function Home() {
         />
         <div className="hero-shade" aria-hidden="true" />
         <div className="container hero-inner">
-          <h1>
-            <span className="hero-title-line">Cyber crime &amp; financial fraud counsel.</span>
-            <span className="hero-title-line">When speed decides the outcome.</span>
-          </h1>
-          <p className="lead">
-            Pan-India practice for fraud recovery, frozen accounts, enforcement matters, and DPDP
-            compliance. Clear first steps. Direct advocate access.
-          </p>
-          <CtaButtons light urgent />
+          <div className="hero-copy">
+            <h1>
+              <span className="hero-title-line">Cyber crime &amp; financial fraud counsel.</span>
+              <span className="hero-title-line">When speed decides the outcome.</span>
+            </h1>
+            <p className="lead">
+              Pan-India practice for fraud recovery, frozen accounts, enforcement matters, and DPDP
+              compliance. Clear first steps. Direct advocate access.
+            </p>
+          </div>
+          <div className="hero-actions">
+            <CtaButtons light urgent />
+          </div>
           <ul className="trust-strip">
             <li>High Courts</li>
             <li>District Courts</li>
