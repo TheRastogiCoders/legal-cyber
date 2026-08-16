@@ -17,7 +17,7 @@
   --shadow: 0 18px 50px rgba(7, 20, 40, 0.18);
   --radius: 4px;
   --max: 1120px;
-  --header-h: 72px;
+  --header-h: 104px;
   --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
 }
@@ -266,18 +266,49 @@ p {
 
 .brand {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.22rem;
   color: var(--white);
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .brand-logo {
   display: block;
-  height: 42px;
+  height: 38px;
   width: auto;
   max-width: min(200px, 52vw);
   object-fit: contain;
   mix-blend-mode: lighten;
+}
+
+.brand-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding-left: 0.08rem;
+}
+
+.brand-lockup__practice,
+.brand-lockup__firm {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.brand-lockup__firm {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .nav {
@@ -1655,13 +1686,25 @@ p {
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1rem 0;
+  padding: 1rem 0 0.35rem;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.6);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
   justify-content: space-between;
+}
+
+.footer-credit {
+  padding: 0.35rem 0 1.15rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.48);
+  letter-spacing: 0.01em;
+}
+
+.footer-credit__name {
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 600;
 }
 
 /* Floating WhatsApp */
@@ -1879,6 +1922,14 @@ body.has-cookie-banner .back-to-top {
   .menu-toggle {
     display: inline-flex;
     z-index: 2;
+  }
+
+  .brand-lockup__practice {
+    font-size: 0.72rem;
+  }
+
+  .brand-lockup__firm {
+    font-size: 0.64rem;
   }
 
   .nav-backdrop {

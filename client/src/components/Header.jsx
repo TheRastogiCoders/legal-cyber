@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { NAV } from '../data/content';
+import { NAV, SITE } from '../data/content';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -29,7 +29,15 @@ export default function Header() {
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
           }}
         >
-          <img src="/logo.png" alt="Lawsake" className="brand-logo" />
+          <img
+            src="/logo.png"
+            alt="Lawsake — Cybercrime & Technology Law, Advocates & Associates"
+            className="brand-logo"
+          />
+          <span className="brand-lockup" aria-hidden="true">
+            <span className="brand-lockup__practice">{SITE.practiceLine}</span>
+            <span className="brand-lockup__firm">{SITE.firmLine}</span>
+          </span>
         </Link>
 
         <button

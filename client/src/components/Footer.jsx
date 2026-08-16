@@ -43,6 +43,10 @@ export default function Footer() {
         <span>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</span>
         <span>This website is for information only and is not an advertisement or solicitation.</span>
       </div>
+      <div className="container footer-credit">
+        Designed, developed and maintained by{' '}
+        <span className="footer-credit__name">Rastogi Codeworks</span>
+      </div>
     </footer>
   );
 }

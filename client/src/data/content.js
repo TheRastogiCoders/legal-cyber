@@ -1,6 +1,8 @@
 export const SITE = {
   name: 'Lawsake',
   tagline: 'Cyber crime, financial fraud & data protection counsel',
+  practiceLine: 'Cybercrime & Technology Law',
+  firmLine: 'Advocates & Associates',
   phone: '+91 93951 59957',
   phoneHref: 'tel:+919395159957',
   whatsapp: '919395159957',
