@@ -27,25 +27,22 @@ export default function Home() {
         <div className="container hero-inner">
           <div className="hero-copy">
             <h1>
-              <span className="hero-title-line">Cyber crime &amp; financial fraud counsel.</span>
-              <span className="hero-title-line">When speed decides the outcome.</span>
+              <span className="hero-title-line">Cybercrime &amp;</span>
+              <span className="hero-title-line">Technology Law</span>
+              <span className="hero-title-line hero-title-line--firm">Advocates &amp; Associates</span>
             </h1>
             <p className="lead">
               Pan-India practice for fraud recovery, frozen accounts, enforcement matters, and DPDP
               compliance. Clear first steps. Direct advocate access.
             </p>
+            <CtaButtons light urgent />
           </div>
-          <div className="hero-bottom">
-            <div className="hero-actions">
-              <CtaButtons light urgent />
-            </div>
-            <ul className="trust-strip">
-              <li>High Courts</li>
-              <li>District Courts</li>
-              <li>ED, CBI, EOW &amp; cyber police</li>
-              <li>8 jurisdictions</li>
-            </ul>
-          </div>
+          <ul className="trust-strip">
+            <li>High Courts</li>
+            <li>District Courts</li>
+            <li>ED, CBI, EOW &amp; cyber police</li>
+            <li>8 jurisdictions</li>
+          </ul>
         </div>
       </section>
 
