@@ -45,7 +45,14 @@ export default function Footer() {
       </div>
       <div className="container footer-credit">
         Designed, developed and maintained by{' '}
-        <span className="footer-credit__name">Rastogi Codeworks</span>
+        <a
+          className="footer-credit__name"
+          href="https://rastogicodeworks.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Rastogi Codeworks
+        </a>
       </div>
     </footer>
   );
