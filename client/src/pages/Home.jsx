@@ -35,7 +35,7 @@ export default function Home() {
               Pan-India practice for fraud recovery, frozen accounts, enforcement matters, and DPDP
               compliance. Clear first steps. Direct advocate access.
             </p>
-            <CtaButtons light urgent />
+            <CtaButtons light primaryOnly />
           </div>
           <ul className="trust-strip">
             <li>High Courts</li>

@@ -43,24 +43,25 @@ export function Reveal({ children, className = '' }) {
   );
 }
 
-export function CtaButtons({ light = false, urgent = false }) {
+export function CtaButtons({ light = false, urgent = false, primaryOnly = false }) {
   return (
     <div className="btn-row">
       <Link className={`btn ${light ? 'btn--light' : 'btn--primary'}`} to="/contact">
         <span className="btn-label--full">Request a Consultation</span>
         <span className="btn-label--short">Consult</span>
       </Link>
-      {urgent ? (
-        <Link className="btn btn--urgent" to="/practice-areas/bank-account-unfreeze">
-          <span className="btn-label--full">Account Frozen? Act Now</span>
-          <span className="btn-label--short">Account Frozen?</span>
-        </Link>
-      ) : (
-        <a className={`btn ${light ? 'btn--ghost' : 'btn--outline'}`} href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-          <span className="btn-label--full">WhatsApp Now</span>
-          <span className="btn-label--short">WhatsApp</span>
-        </a>
-      )}
+      {!primaryOnly &&
+        (urgent ? (
+          <Link className="btn btn--urgent" to="/practice-areas/bank-account-unfreeze">
+            <span className="btn-label--full">Account Frozen? Act Now</span>
+            <span className="btn-label--short">Account Frozen?</span>
+          </Link>
+        ) : (
+          <a className={`btn ${light ? 'btn--ghost' : 'btn--outline'}`} href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            <span className="btn-label--full">WhatsApp Now</span>
+            <span className="btn-label--short">WhatsApp</span>
+          </a>
+        ))}
     </div>
   );
 }
