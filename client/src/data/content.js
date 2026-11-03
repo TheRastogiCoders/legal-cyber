@@ -5,6 +5,8 @@ export const SITE = {
   firmLine: 'Advocates & Associates',
   phone: '+91 93951 59957',
   phoneHref: 'tel:+919395159957',
+  phone2: '+91 93655 95365',
+  phone2Href: 'tel:+919365595365',
   whatsapp: '919395159957',
   whatsappText: 'Hello, I need legal assistance regarding a cyber matter.',
   email: 'contact@lawsake.com',
@@ -12,7 +14,11 @@ export const SITE = {
   hours: 'Monday–Saturday, 10:00–19:00 IST',
 };
 
-export const WHATSAPP_URL = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(SITE.whatsappText)}`;
+export function whatsappUrl(site = SITE) {
+  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappText || '')}`;
+}
+
+export const WHATSAPP_URL = whatsappUrl(SITE);
 
 export const NAV = [
   { label: 'Home', to: '/' },

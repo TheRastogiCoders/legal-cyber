@@ -1,47 +1,32 @@
 import { Link } from 'react-router-dom';
-import { ARTICLES, PRACTICE_AREAS, STATS, STEPS, WHY } from '../data/content';
-import { ARTICLE_IMAGES, IMAGES, PRACTICE_IMAGES } from '../data/images';
+import { useContent } from '../cms/ContentContext';
+import { featuredPracticeAreas } from '../cms/utils';
 import { CtaBand, CtaButtons, Reveal } from '../components/ui';
 
 export default function Home() {
-  const featured = PRACTICE_AREAS.filter((p) =>
-    [
-      'cyber-crime-online-fraud',
-      'bank-account-unfreeze',
-      'ed-eow-pmla',
-      'dpdp-compliance',
-      'platform-documentation',
-      'ip',
-    ].includes(p.slug)
-  );
+  const { content } = useContent();
+  const home = content.home;
+  const featured = featuredPracticeAreas(content);
 
   return (
     <>
       <section className="hero">
-        <img
-          className="hero-media"
-          src={IMAGES.hero}
-          alt="Digital networks over Earth — representing India’s digital economy"
-        />
+        <img className="hero-media" src={content.images.hero} alt={home.heroImageAlt} />
         <div className="hero-shade" aria-hidden="true" />
         <div className="container hero-inner">
           <div className="hero-copy">
             <h1>
-              <span className="hero-title-line">Cybercrime &amp;</span>
-              <span className="hero-title-line">Technology Law</span>
-              <span className="hero-title-line hero-title-line--firm">Advocates &amp; Associates</span>
+              <span className="hero-title-line">{home.heroLine1}</span>
+              <span className="hero-title-line">{home.heroLine2}</span>
+              <span className="hero-title-line hero-title-line--firm">{home.heroLine3}</span>
             </h1>
-            <p className="lead">
-              Pan-India practice for fraud recovery, frozen accounts, enforcement matters, and DPDP
-              compliance. Clear first steps. Direct advocate access.
-            </p>
+            <p className="lead">{home.heroLead}</p>
             <CtaButtons light primaryOnly />
           </div>
           <ul className="trust-strip">
-            <li>High Courts</li>
-            <li>District Courts</li>
-            <li>ED, CBI, EOW &amp; cyber police</li>
-            <li>8 jurisdictions</li>
+            {(home.trust || []).map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </div>
       </section>
@@ -49,42 +34,29 @@ export default function Home() {
       <section className="stats">
         <div className="container">
           <div className="stats-grid">
-            {STATS.map((s) => (
+            {content.stats.map((s) => (
               <div className="stat" key={s.value}>
                 <strong>{s.value}</strong>
                 <span>{s.label}</span>
               </div>
             ))}
           </div>
-          <p className="stats-note">
-            Figures from official I4C/MHA disclosures for calendar year 2024. Review annually.
-          </p>
+          <p className="stats-note">{home.statsNote}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container section-split-media">
           <Reveal>
-            <div className="eyebrow">The Problem</div>
-            <h2>Cybercrime in India runs at industrial scale. Your response cannot be improvised.</h2>
-            <p>
-              Investment scams, digital-arrest extortion, and UPI fraud move money in minutes. Recovering
-              it — and unfreezing accounts caught in the dragnet — depends on knowing how police, banks,
-              and portals actually work.
-            </p>
-            <p>
-              Innocent businesses get accounts frozen over one tainted transfer. Gateways hold settlements.
-              Agencies issue summons. The DPDP Act adds penalty risk of up to ₹250 crore for data failures.
-            </p>
-            <p className="highlight-line">This practice exists for exactly these situations.</p>
+            <div className="eyebrow">{home.problemEyebrow}</div>
+            <h2>{home.problemTitle}</h2>
+            <p>{home.problemP1}</p>
+            <p>{home.problemP2}</p>
+            <p className="highlight-line">{home.problemHighlight}</p>
           </Reveal>
           <Reveal>
             <figure className="media-frame media-frame--tall">
-              <img
-                src={IMAGES.problem}
-                alt="Cybersecurity operations — digital defence context"
-                loading="lazy"
-              />
+              <img src={content.images.problem} alt={home.problemImageAlt} loading="lazy" />
             </figure>
           </Reveal>
         </div>
@@ -93,12 +65,12 @@ export default function Home() {
       <section className="section section--muted">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">Why Lawsake</div>
-            <h2>Why clients retain this practice</h2>
-            <p className="lead">Four reasons matters move faster here than with general counsel.</p>
+            <div className="eyebrow">{home.whyEyebrow}</div>
+            <h2>{home.whyTitle}</h2>
+            <p className="lead">{home.whyLead}</p>
           </div>
           <div className="principle-grid">
-            {WHY.map((w) => (
+            {content.why.map((w) => (
               <article className="principle" key={w.title}>
                 <h3>{w.title}</h3>
                 <p>{w.text}</p>
@@ -111,19 +83,16 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">How We Help</div>
-            <h2>Focused counsel where technology and law collide</h2>
-            <p className="lead">
-              Start here if you need action fast — each area has a clear process from first response to
-              resolution.
-            </p>
+            <div className="eyebrow">{home.helpEyebrow}</div>
+            <h2>{home.helpTitle}</h2>
+            <p className="lead">{home.helpLead}</p>
           </div>
           <div className="grid-3">
             {featured.map((p) => (
               <Reveal key={p.slug}>
                 <Link className="card-link" to={`/practice-areas/${p.slug}`}>
                   <div className="card-link__media">
-                    <img src={PRACTICE_IMAGES[p.slug]} alt="" loading="lazy" />
+                    <img src={content.practiceImages[p.slug]} alt="" loading="lazy" />
                   </div>
                   <div className="card-link__body">
                     <div className="card-link__eyebrow">{p.urgent ? 'High urgency' : ''}</div>
@@ -137,7 +106,7 @@ export default function Home() {
           </div>
           <div className="btn-row" style={{ marginTop: '2rem' }}>
             <Link className="btn btn--outline" to="/practice-areas">
-              View All Practice Areas
+              {home.helpCta}
             </Link>
           </div>
         </div>
@@ -146,12 +115,12 @@ export default function Home() {
       <section className="section section--dark">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">How It Works</div>
-            <h2>Clarity first. Action second. Outcomes through process.</h2>
+            <div className="eyebrow">{home.processEyebrow}</div>
+            <h2>{home.processTitle}</h2>
           </div>
           <div className="steps-layout">
             <div className="steps-grid">
-              {STEPS.map((s) => (
+              {content.steps.map((s) => (
                 <article className="step" key={s.n}>
                   <span className="n">{s.n}</span>
                   <h3>{s.title}</h3>
@@ -160,7 +129,7 @@ export default function Home() {
               ))}
             </div>
             <figure className="media-frame media-frame--steps">
-              <img src={IMAGES.process} alt="Secure digital infrastructure" loading="lazy" />
+              <img src={content.images.process} alt={home.processImageAlt} loading="lazy" />
             </figure>
           </div>
         </div>
@@ -169,14 +138,14 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">Knowledge</div>
-            <h2>Practical guidance for high-stakes moments</h2>
+            <div className="eyebrow">{home.knowledgeEyebrow}</div>
+            <h2>{home.knowledgeTitle}</h2>
           </div>
           <div>
-            {ARTICLES.slice(0, 3).map((a) => (
+            {content.articles.slice(0, 3).map((a) => (
               <Link className="article-card" to={`/knowledge/${a.slug}`} key={a.slug}>
                 <div className="article-card__media">
-                  <img src={ARTICLE_IMAGES[a.slug]} alt="" loading="lazy" />
+                  <img src={content.articleImages[a.slug]} alt="" loading="lazy" />
                 </div>
                 <div>
                   <div className="meta-row">
@@ -190,7 +159,7 @@ export default function Home() {
           </div>
           <div className="btn-row">
             <Link className="btn btn--outline" to="/knowledge">
-              Browse Knowledge Centre
+              {home.knowledgeCta}
             </Link>
           </div>
         </div>

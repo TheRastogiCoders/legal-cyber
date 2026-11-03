@@ -1,46 +1,49 @@
 import { PageHero } from '../components/ui';
-import { SITE, WHATSAPP_URL } from '../data/content';
-import { IMAGES } from '../data/images';
+import { useContent } from '../cms/ContentContext';
+import { siteWhatsApp } from '../cms/utils';
 
 export default function Contact() {
+  const { content } = useContent();
+  const page = content.contact;
+  const site = content.site;
+  const wa = siteWhatsApp(content);
+
   return (
     <>
-      <PageHero
-        eyebrow="Contact"
-        title="Get in touch"
-        lead="Reach us directly by phone, WhatsApp, or email. We respond during business hours, and urgent matters are triaged outside hours."
-        image={IMAGES.contact}
-      />
+      <PageHero eyebrow={page.eyebrow} title={page.title} lead={page.lead} image={content.images.contact} />
       <section className="section">
         <div className="container contact-simple">
           <div className="contact-simple__card">
-            <h2>Direct contact</h2>
+            <h2>{page.cardTitle}</h2>
             <dl className="contact-list">
               <div className="contact-row">
-                <dt>Phone / WhatsApp</dt>
+                <dt>{page.phoneLabel}</dt>
                 <dd>
-                  <a href={SITE.phoneHref}>{SITE.phone}</a>
+                  <span className="contact-phones">
+                    <a href={site.phoneHref}>{site.phone}</a>
+                    {site.phone2 ? <a href={site.phone2Href}>{site.phone2}</a> : null}
+                  </span>
                   <span className="contact-note">
-                    Or message on{' '}
-                    <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+                    {page.whatsappNote}{' '}
+                    <a href={wa} target="_blank" rel="noreferrer">
                       WhatsApp
                     </a>
                   </span>
                 </dd>
               </div>
               <div className="contact-row">
-                <dt>Email</dt>
+                <dt>{page.emailLabel}</dt>
                 <dd>
-                  <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+                  <a href={`mailto:${site.email}`}>{site.email}</a>
                 </dd>
               </div>
             </dl>
             <div className="btn-row contact-simple__actions">
-              <a className="btn btn--primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                WhatsApp Now
+              <a className="btn btn--primary" href={wa} target="_blank" rel="noreferrer">
+                {page.whatsappCta}
               </a>
-              <a className="btn btn--outline" href={`mailto:${SITE.email}`}>
-                Send Email
+              <a className="btn btn--outline" href={`mailto:${site.email}`}>
+                {page.emailCta}
               </a>
             </div>
           </div>

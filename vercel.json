@@ -4,6 +4,6 @@
   "buildCommand": "npm run build --prefix client",
   "outputDirectory": "client/dist",
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|uploads/|cms\\.json).*)", "destination": "/index.html" }
   ]
 }

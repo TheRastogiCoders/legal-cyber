@@ -1,31 +1,30 @@
-import { EXPERIENCE } from '../data/content';
-import { IMAGES } from '../data/images';
 import { CtaBand, PageHero, Reveal } from '../components/ui';
+import { useContent } from '../cms/ContentContext';
 
 export default function Experience() {
+  const { content } = useContent();
+  const page = content.experiencePage;
+
   return (
     <>
       <PageHero
-        eyebrow="Experience"
-        title="Representative matters"
-        lead="Anonymised examples of the work we do. Past outcomes do not guarantee future results."
-        image={IMAGES.experience}
+        eyebrow={page.eyebrow}
+        title={page.title}
+        lead={page.lead}
+        image={content.images.experience}
       />
       <section className="section">
         <div className="container section-split-media" style={{ marginBottom: '2.5rem' }}>
           <figure className="media-frame">
-            <img src={IMAGES.process} alt="Secure digital systems and counsel work" loading="lazy" />
+            <img src={content.images.process} alt={page.introImageAlt} loading="lazy" />
           </figure>
           <div>
-            <h2>Matter experience that matters</h2>
-            <p>
-              From multi-crore crypto fraud proceedings to parallel unfreeze programmes across 18+ cyber
-              police stations — the practice is built for complex, multi-forum cyber and financial matters.
-            </p>
+            <h2>{page.introTitle}</h2>
+            <p>{page.introText}</p>
           </div>
         </div>
         <div className="container">
-          {EXPERIENCE.map((e) => (
+          {content.experienceItems.map((e) => (
             <Reveal key={e.title}>
               <div className="feature">
                 <h3>{e.title}</h3>

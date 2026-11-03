@@ -1,46 +1,32 @@
 import { Link } from 'react-router-dom';
 import { CtaBand, PageHero } from '../components/ui';
-import { SITE, WHATSAPP_URL } from '../data/content';
-import { IMAGES } from '../data/images';
-
-const ENGAGEMENTS = [
-  'Speaker, Legal 40 National Cohort — Cyber Law',
-  'Invited cyber-law speaker for Bioshala and Logicalayam',
-  'Cyber-law and DPDP training for professional and student audiences',
-];
-
-const TRAINING = [
-  'Cyber Fraud Response for Teams',
-  'DPDP Act for Product & Support Teams',
-  'Contracts & Compliance for Founders',
-  'POSH & Internal Committee Training',
-];
+import { useContent } from '../cms/ContentContext';
+import { siteWhatsApp } from '../cms/utils';
 
 export default function Speaking() {
+  const { content } = useContent();
+  const page = content.speaking;
+  const site = content.site;
+
   return (
     <>
-      <PageHero
-        eyebrow="Speaking & Training"
-        title="Awareness is prevention"
-        lead="Talks and training on cyber crime, digital fraud, and data protection — for teams, institutions, and professional cohorts."
-        image={IMAGES.speaking}
-      />
+      <PageHero eyebrow={page.eyebrow} title={page.title} lead={page.lead} image={content.images.speaking} />
       <section className="section">
         <div className="container detail-layout">
           <div className="detail-main">
             <div className="detail-block">
-              <h2>Selected engagements</h2>
+              <h2>{page.engagementsTitle}</h2>
               <ul className="list-check">
-                {ENGAGEMENTS.map((item) => (
+                {(page.engagements || []).map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
 
             <div className="detail-block">
-              <h2>Training offered</h2>
+              <h2>{page.trainingTitle}</h2>
               <ul className="list-check">
-                {TRAINING.map((item) => (
+                {(page.training || []).map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
@@ -49,24 +35,30 @@ export default function Speaking() {
 
           <aside className="detail-sidebar">
             <figure className="media-frame media-frame--sidebar">
-              <img src={IMAGES.speaking} alt="Speaking and training engagement" loading="lazy" />
+              <img src={content.images.speaking} alt={page.imageAlt} loading="lazy" />
             </figure>
             <div className="contact-aside">
-              <h3>Invite as a speaker</h3>
+              <h3>{page.inviteTitle}</h3>
+              <p>{page.inviteText}</p>
               <p>
-                Use the contact form with the subject “Speaking Invitation”, including event, audience,
-                format, and date.
-              </p>
-              <p>
-                Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+                Email: <a href={`mailto:${site.email}`}>{site.email}</a>
+                <br />
+                Phone:{' '}
+                <a href={site.phoneHref}>{site.phone}</a>
+                {site.phone2 ? (
+                  <>
+                    {' · '}
+                    <a href={site.phone2Href}>{site.phone2}</a>
+                  </>
+                ) : null}
                 <br />
                 WhatsApp:{' '}
-                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                  {SITE.phone}
+                <a href={siteWhatsApp(content)} target="_blank" rel="noreferrer">
+                  {site.phone}
                 </a>
               </p>
               <Link className="btn btn--light" to="/contact">
-                Contact for Speaking
+                {page.inviteCta}
               </Link>
             </div>
           </aside>

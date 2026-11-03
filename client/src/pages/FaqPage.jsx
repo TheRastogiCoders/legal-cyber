@@ -1,13 +1,15 @@
-import { FAQS } from '../data/content';
 import { CtaBand, FaqList, PageHero } from '../components/ui';
+import { useContent } from '../cms/ContentContext';
 
 export default function FaqPage() {
+  const { content } = useContent();
+  const page = content.faqPage;
   return (
     <>
-      <PageHero eyebrow="Knowledge" title="Frequently asked questions" lead="Straight answers on process, geography, confidentiality, and urgency." />
+      <PageHero eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
       <section className="section">
         <div className="container" style={{ maxWidth: '760px' }}>
-          <FaqList items={FAQS} />
+          <FaqList items={content.faqs} />
         </div>
       </section>
       <CtaBand />

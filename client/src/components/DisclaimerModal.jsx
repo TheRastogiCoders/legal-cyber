@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useContent } from '../cms/ContentContext';
 
 const KEY = 'lc-disclaimer-accepted';
 
 export default function DisclaimerModal() {
+  const { content } = useContent();
+  const copy = content.disclaimerModal || {};
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -32,33 +35,19 @@ export default function DisclaimerModal() {
   return (
     <div className="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
       <div className="modal">
-        <h2 id="disclaimer-title">Disclaimer & User Acknowledgement</h2>
-        <p>
-          As per the rules of the Bar Council of India, advocates are not permitted to solicit work or
-          advertise. By clicking “I Agree”, you acknowledge and confirm that:
-        </p>
+        <h2 id="disclaimer-title">{copy.title}</h2>
+        <p>{copy.intro}</p>
         <ul>
-          <li>
-            You wish to gain more information about Lawsake and its advocates for your own information
-            and personal/professional use, and are accessing this website of your own accord; there has been
-            no advertisement, solicitation, invitation, or inducement of any kind.
-          </li>
-          <li>
-            The information on this website is intended for general information only and does not constitute
-            legal advice or a legal opinion.
-          </li>
-          <li>
-            No lawyer-client relationship is created by accessing or using this website, or by transmitting
-            any enquiry through it.
-          </li>
-          <li>Where you require legal assistance, you must seek independent legal advice.</li>
+          {(copy.items || []).map((item) => (
+            <li key={item}>{item}</li>
+          ))}
         </ul>
         <div className="btn-row">
           <button type="button" className="btn btn--primary" onClick={agree}>
-            I Agree
+            {copy.agree}
           </button>
           <button type="button" className="btn btn--outline" onClick={disagree}>
-            Disagree
+            {copy.disagree}
           </button>
         </div>
       </div>

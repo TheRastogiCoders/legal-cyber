@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useContent } from '../cms/ContentContext';
 
 const KEY = 'lc-cookie-choice';
 
 export default function CookieBanner() {
+  const { content } = useContent();
+  const copy = content.cookieBanner || {};
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -34,15 +37,15 @@ export default function CookieBanner() {
     <div className="cookie-banner" role="dialog" aria-label="Cookie notice">
       <div className="cookie-banner__inner">
         <p>
-          We use essential cookies to run this site, and optional analytics only with your consent.{' '}
-          <Link to="/cookie-policy">Cookie Policy</Link>
+          {copy.text}{' '}
+          <Link to="/cookie-policy">{copy.policyLink}</Link>
         </p>
         <div className="cookie-banner__actions">
           <button type="button" className="btn btn--light" onClick={() => choose('all')}>
-            Accept
+            {copy.accept}
           </button>
           <button type="button" className="btn btn--ghost" onClick={() => choose('essential')}>
-            Essential only
+            {copy.essential}
           </button>
         </div>
       </div>

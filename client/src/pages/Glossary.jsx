@@ -1,13 +1,15 @@
-import { GLOSSARY } from '../data/content';
 import { CtaBand, PageHero } from '../components/ui';
+import { useContent } from '../cms/ContentContext';
 
 export default function Glossary() {
+  const { content } = useContent();
+  const page = content.glossaryPage;
   return (
     <>
-      <PageHero eyebrow="Knowledge" title="Glossary" lead="Key terms used across cybercrime investigations, freezes, PMLA, and data protection." />
+      <PageHero eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
       <section className="section">
         <div className="container">
-          {GLOSSARY.map((g) => (
+          {content.glossary.map((g) => (
             <div className="feature" key={g.term}>
               <h3>{g.term}</h3>
               <p>{g.def}</p>

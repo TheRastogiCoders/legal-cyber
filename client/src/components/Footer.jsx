@@ -1,17 +1,28 @@
 import { Link } from 'react-router-dom';
-import { SITE } from '../data/content';
+import { useContent } from '../cms/ContentContext';
 
 export default function Footer() {
+  const { content } = useContent();
+  const site = content.site;
+  const shared = content.shared || {};
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <img src="/logo.png" alt="Lawsake" className="footer-logo" />
-          <p>{SITE.tagline}</p>
+          <img src={shared.logo || '/logo.png'} alt={site.name} className="footer-logo" />
+          <p>{site.tagline}</p>
           <p>
-            {SITE.location}
+            {site.location}
             <br />
-            Serving clients pan-India and internationally.
+            <a href={site.phoneHref}>{site.phone}</a>
+            {site.phone2 ? (
+              <>
+                <br />
+                <a href={site.phone2Href}>{site.phone2}</a>
+              </>
+            ) : null}
+            <br />
+            {shared.servingLine}
           </p>
         </div>
         <div>
@@ -40,8 +51,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</span>
-        <span>This website is for information only and is not an advertisement or solicitation.</span>
+        <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+        <span>{shared.footerLegal}</span>
       </div>
       <div className="container footer-credit">
         Designed, developed and maintained by{' '}

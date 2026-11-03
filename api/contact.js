@@ -85,6 +85,6 @@ module.exports = function handler(req, res) {
     ok: true,
     id: enquiry.id,
     message:
-      'Thank you. Your enquiry has been received and will be reviewed shortly. If your matter is urgent, please also WhatsApp +91 93951 59957 with the word URGENT.',
+      'Thank you. Your enquiry has been received and will be reviewed shortly. If your matter is urgent, please also WhatsApp +91 93951 59957 or call +91 93655 95365 with the word URGENT.',
   });
 };

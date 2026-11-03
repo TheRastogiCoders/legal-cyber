@@ -1,8 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { NAV, SITE } from '../data/content';
+import { NAV } from '../data/content';
+import { useContent } from '../cms/ContentContext';
 
 export default function Header() {
+  const { content } = useContent();
+  const site = content.site;
+  const nav = NAV.map((item) =>
+    item.to === '/practice-areas'
+      ? {
+          ...item,
+          children: (content.practiceAreas || []).map((p) => ({
+            label: p.title,
+            to: `/practice-areas/${p.slug}`,
+          })),
+        }
+      : item
+  );
   const [open, setOpen] = useState(false);
   const [openDrop, setOpenDrop] = useState(null);
   const location = useLocation();
@@ -30,13 +44,13 @@ export default function Header() {
           }}
         >
           <img
-            src="/logo.png"
-            alt="Lawsake — Cybercrime & Technology Law, Advocates & Associates"
+            src={content.shared?.logo || '/logo.png'}
+            alt={`${site.name} — ${site.practiceLine}, ${site.firmLine}`}
             className="brand-logo"
           />
           <span className="brand-lockup" aria-hidden="true">
-            <span className="brand-lockup__practice">{SITE.practiceLine}</span>
-            <span className="brand-lockup__firm">{SITE.firmLine}</span>
+            <span className="brand-lockup__practice">{site.practiceLine}</span>
+            <span className="brand-lockup__firm">{site.firmLine}</span>
           </span>
         </Link>
 
@@ -54,7 +68,7 @@ export default function Header() {
         </button>
 
         <nav id="site-nav" className={`nav ${open ? 'open' : ''}`}>
-          {NAV.map((item) =>
+          {nav.map((item) =>
             item.children ? (
               <div key={item.label} className={`dropdown ${openDrop === item.label ? 'open' : ''}`}>
                 <button

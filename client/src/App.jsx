@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ContentProvider } from './cms/ContentContext';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,9 +15,11 @@ import Glossary from './pages/Glossary';
 import Speaking from './pages/Speaking';
 import Internships from './pages/Internships';
 import Contact from './pages/Contact';
+import Dashboard from './pages/Dashboard';
 import { CookiePolicy, Disclaimer, PrivacyPolicy, TermsOfUse } from './pages/Legal';
 
 const router = createBrowserRouter([
+  { path: '/dashboard', element: <Dashboard /> },
   {
     path: '/',
     element: <Layout />,
@@ -44,5 +47,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ContentProvider>
+      <RouterProvider router={router} />
+    </ContentProvider>
+  );
 }

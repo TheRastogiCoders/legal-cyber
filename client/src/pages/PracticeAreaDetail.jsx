@@ -1,20 +1,21 @@
 import { Link, useParams } from 'react-router-dom';
-import { PRACTICE_AREAS } from '../data/content';
-import { PRACTICE_IMAGES } from '../data/images';
 import { CtaBand, CtaButtons, FaqList, PageHero } from '../components/ui';
+import { useContent } from '../cms/ContentContext';
 
 export default function PracticeAreaDetail() {
+  const { content } = useContent();
   const { slug } = useParams();
-  const area = PRACTICE_AREAS.find((p) => p.slug === slug);
-  const image = PRACTICE_IMAGES[slug];
+  const labels = content.practiceDetail;
+  const area = content.practiceAreas.find((p) => p.slug === slug);
+  const image = content.practiceImages[slug];
 
   if (!area) {
     return (
       <section className="section">
         <div className="container">
-          <h1>Practice area not found</h1>
+          <h1>{labels.notFoundTitle}</h1>
           <Link className="btn btn--primary" to="/practice-areas">
-            Back to Practice Areas
+            {labels.notFoundCta}
           </Link>
         </div>
       </section>
@@ -35,18 +36,18 @@ export default function PracticeAreaDetail() {
             <p className="lead lead--body">{area.intro}</p>
 
             <div className="detail-block">
-              <h2>Who this is for</h2>
+              <h2>{labels.forWhomTitle}</h2>
               <ul className="list-check">
-                {area.forWhom.map((item) => (
+                {(area.forWhom || []).map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
 
             <div className="detail-block">
-              <h2>What we do</h2>
+              <h2>{labels.whatWeDoTitle}</h2>
               <ul className="list-check">
-                {area.whatWeDo.map((item) => (
+                {(area.whatWeDo || []).map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
@@ -62,19 +63,16 @@ export default function PracticeAreaDetail() {
 
             {area.faqs?.length ? (
               <div className="detail-panel">
-                <h2>Questions we hear often</h2>
+                <h2>{labels.faqsTitle}</h2>
                 <FaqList items={area.faqs} />
               </div>
             ) : (
               <div className="contact-aside">
-                <h3>Need this handled urgently?</h3>
-                <p>
-                  Share the facts through the contact form or WhatsApp. Freeze and fraud matters are
-                  triaged for rapid first response.
-                </p>
+                <h3>{labels.urgentAsideTitle}</h3>
+                <p>{labels.urgentAsideText}</p>
                 <div className="btn-row">
                   <Link className="btn btn--light" to="/contact">
-                    Request a Consultation
+                    {labels.consultCta}
                   </Link>
                 </div>
               </div>
@@ -83,8 +81,8 @@ export default function PracticeAreaDetail() {
         </div>
       </section>
       <CtaBand
-        title={area.urgent ? 'Account frozen? Time matters.' : 'Facing a similar issue?'}
-        text="Get a structured written assessment — forum, remedy, sequence, and realistic expectations."
+        title={area.urgent ? labels.ctaUrgentTitle : labels.ctaDefaultTitle}
+        text={labels.ctaText}
       />
     </>
   );
